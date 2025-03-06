@@ -1,0 +1,238 @@
+.app-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: 'Arial', sans-serif;
+}
+
+.app-title {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.image-container {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.header-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.server-config-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+}
+
+.server-url-input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.server-url-submit {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.server-setup-instructions {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #e9ecef;
+  border-radius: 4px;
+}
+
+.instructions-section {
+  background-color: #f8f9fa;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.file-controls {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.file-status {
+  background-color: #e9ecef;
+  padding: 8px 12px;
+  border-radius: 4px;
+  color: #495057;
+}
+
+.scenario-selector {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.scenario-btn {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.chat-container {
+  display: flex;
+  gap: 20px;
+  min-height: 600px;
+}
+
+.client-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.client-chat-window {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.assistants-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.advisor-window, .progress-window {
+  flex: 1;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.window-header {
+  background-color: #007bff;
+  color: white;
+  padding: 10px;
+  font-weight: bold;
+}
+
+.chat-history {
+  flex: 1;
+  padding: 15px;
+  overflow-y: auto;
+  background-color: white;
+  text-align: left; /* Added this line */
+}
+
+.chat-message {
+  margin-bottom: 15px;
+  padding: 10px;
+  border-radius: 8px;
+  background-color: #f1f1f1;
+  text-align: left; /* Added this line */
+}
+
+.message-sender {
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.advisor-feedback {
+  margin-bottom: 15px;
+  padding: 10px;
+  border-radius: 8px;
+  background-color: #e6f7ff;
+  white-space: pre-wrap;
+  text-align: left; /* Added this line */
+}
+
+.progress-content {
+  flex: 1;
+  padding: 15px;
+  overflow-y: auto;
+  background-color: white;
+  text-align: left; /* Added this line */
+}
+
+.input-form {
+  display: flex;
+  padding: 10px;
+  background-color: #f1f1f1;
+}
+
+.user-input {
+  flex: 1;
+  min-height: 80px;
+  resize: vertical;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 8px;
+}
+
+.submit-btn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 0 15px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.download-section {
+  padding: 10px;
+  background-color: #f1f1f1;
+  text-align: right;
+}
+
+.download-btn {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+.loading-indicator {
+  font-style: italic;
+  color: #6c757d;
+  margin: 10px 0;
+}
+
+.error-message {
+  color: #dc3545;
+  padding: 10px;
+  background-color: #f8d7da;
+  border-radius: 4px;
+  margin: 10px 0;
+}
+
+code {
+  background-color: #f1f1f1;
+  padding: 2px 4px;
+  border-radius: 4px;
+}
+
+button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
