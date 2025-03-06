@@ -4,6 +4,7 @@
   "description": "Local server for Cultural Technology Assistant",
   "type": "module",
   "main": "server.js",
+  "homepage": "https://khallinan12345.github.io/cultural-tech-assistant-web",
   "scripts": {
     "start": "node server.js",
     "dev": "vite",
