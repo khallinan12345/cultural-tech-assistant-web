@@ -18,11 +18,11 @@ const CulturalTrainerLocal = () => {
   const [trainingHistory, setTrainingHistory] = useState(null);
   const [trainingProgress, setTrainingProgress] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [llamaServerUrl, setLlamaServerUrl] = useState(
-    process.env.NODE_ENV === 'production' 
-      ? '' // You'll update this when you deploy the server
-      : 'http://localhost:3001'
-  );  
+const [llamaServerUrl, setLlamaServerUrl] = useState(
+  process.env.NODE_ENV === 'production' 
+    ? '/.netlify/functions' // Changed from empty string to Netlify Functions path
+    : 'http://localhost:3001'
+);  
   const [showServerConfig, setShowServerConfig] = useState(true);
   const [apiError, setApiError] = useState(null);
   const [isSessionStarted, setIsSessionStarted] = useState(false);
@@ -199,33 +199,38 @@ const CulturalTrainerLocal = () => {
   };
   
   // Function to make API call to AI service
-  const callLlamaAPI = async (prompt, role) => {
-    setApiError(null);
+const callLlamaAPI = async (prompt, role) => {
+  setApiError(null);
+  
+  try {
+    console.log(`Calling API at ${llamaServerUrl}`);
+    // For production endpoint with Netlify Functions, we need to call the function name directly
+    const endpoint = process.env.NODE_ENV === 'production' 
+      ? `${llamaServerUrl}/generate` // Netlify Functions endpoint
+      : `${llamaServerUrl}/api/generate`; // Local development endpoint
+      
+    const response = await fetch(endpoint, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        prompt: `<s>[INST] <<SYS>>\n${role}\n<</SYS>>\n\n${prompt} [/INST]`,
+      })
+    });
     
-    try {
-      console.log(`Calling API at ${llamaServerUrl}`);
-      const response = await fetch(`${llamaServerUrl}/api/generate`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          prompt: `<s>[INST] <<SYS>>\n${role}\n<</SYS>>\n\n${prompt} [/INST]`,
-        })
-      });
-      
-      if (!response.ok) {
-        throw new Error(`Request failed with status code ${response.status}`);
-      }
-      
-      const data = await response.json();
-      return data.response || '';
-    } catch (error) {
-      console.error('Error calling API:', error);
-      setApiError(error.message);
-      return `API Error: ${error.message}. Please check your API connection and try again.`;
+    if (!response.ok) {
+      throw new Error(`Request failed with status code ${response.status}`);
     }
-  };
+    
+    const data = await response.json();
+    return data.response || '';
+  } catch (error) {
+    console.error('Error calling API:', error);
+    setApiError(error.message);
+    return `API Error: ${error.message}. Please check your API connection and try again.`;
+  }
+};
   
   // Function to analyze training progress and generate an updated evaluation
   const generateProgressEvaluation = async () => {
